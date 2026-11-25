@@ -1,0 +1,20 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection{Background and Motivation}
+Extreme weather events have intensified short-term fluctuations in agricultural product prices. Following typhoons, the average wholesale prices of vegetables may increase by approximately 10\%--40\% during the first week. However, short-term retail vegetable prices exhibit a heterogeneous distribution: most prices remain relatively stable, while a small proportion experience substantial changes. This pattern makes short-term retail price forecasting challenging, particularly when users need estimates for a specific vendor rather than market-wide averages.
+
+\subsection{Problem Statement and Research Gap}
+Publicly available average prices do not necessarily represent the actual transaction prices of individual retail vendors. In addition, existing price information systems may not provide a mechanism for validating a forecast against the subsequent price charged by the same vendor after the forecast horizon. To address these limitations, this study proposes an on-site vegetable price forecasting and analysis agent for 7-day and 14-day horizons. The proposed agent uses the current price entered by a consumer as the reference price and generates directional forecasts indicating whether the price is expected to increase, decrease, or remain unchanged. It supports both Web-based and Model Context Protocol (MCP)-based interfaces.
+
+\subsection{Research Contributions}
+The proposed approach is developed using daily price data from 13 public retail markets in Taichung City, Taiwan. A temporal maturity mechanism is incorporated to prevent data leakage by ensuring that only information available at the prediction time is used. A Random Forest model is employed for the 7-day horizon, while a Gradient Boosting Tree model is used for the 14-day horizon, with separate modeling for the respective forecast intervals. The study also investigates two pricing modes: current-price anchoring and adjustment based on the same vendor's price from the previous week.
+
+The main contributions of this work are as follows:
+\begin{itemize}
+    \item We propose an on-site vegetable price forecasting and analysis agent that accepts a consumer-provided current price as its anchor and provides 7-day and 14-day directional forecasts through Web and MCP interfaces.
+    \item We develop a forecasting and evaluation pipeline using daily price data from 13 public retail markets in Taichung City, incorporating a temporal maturity mechanism to reduce information leakage and two alternative price-reference modes.
+    \item We evaluate the models on sealed test sets containing 2,085 observations for the 7-day horizon and 1,859 observations for the 14-day horizon. The models achieve Macro-F1 scores of 0.4218 and 0.4169, respectively, outperforming the unchanged-price baselines (0.3092 and 0.2954), but not the momentum baselines (0.4226 and 0.4306). The models also do not outperform the unchanged-price baselines in relative-change mean absolute error (MAE), and the recall for price increases is 10.1\%.
+\end{itemize}
+
+\subsection{Paper Organization}
+Section~\ref{sec:related} reviews related work. Section~\ref{sec:method} presents the proposed scheme. Section~\ref{sec:experiments} describes the evaluation, and Section~\ref{sec:conclusion} concludes the paper.
